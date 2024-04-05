@@ -1,3 +1,7 @@
+// Retrieve tasks and nextId from localStorage
+let taskList = JSON.parse(localStorage.getItem("tasks")) || [];
+let nextId = JSON.parse(localStorage.getItem("nextId"));
+
 // Function to create a task card
 function createTaskCard(task) {
    const taskCard = $("<div>")
