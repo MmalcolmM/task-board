@@ -5,8 +5,8 @@ const doneList = $('#doneCards');
 const taskNameInput = $("#taskName");
 const dueDateInput = $("#dueDate");
 const taskDescriptionInput = $("#taskDescription");
-const deleteBtn = $('.deleteBtn');
-const lane = $('.laneList');
+// const deleteBtn = $('.deleteBtn');
+// const lane = $('.laneList');
 
 // Set the z-index of lane elements to -1
 lane.css('z-index', '-1');
@@ -89,44 +89,43 @@ function renderTaskList() {
     }
 }
 
-// Function to handle adding a new task
-function handleAddTask(event) {
-    event.preventDefault();
-    // Check for empty input fields
-    if (taskNameInput.val() === '' || dueDateInput.val() === '' || taskDescriptionInput.val() === '') {
-        alert('You can\'t leave nothing blank \'round\ here');
-        return;
-    } else {
-        // Get task details from input fields
-        let taskList = JSON.parse(localStorage.getItem("tasks"));
-        const taskName = taskNameInput.val();
-        const taskDueDate = dueDateInput.val();
-        const taskDescription = taskDescriptionInput.val();
+ // Function to handle adding a new task
+    function handleAddTask(event) {
+        event.preventDefault();
+        // Check for empty input fields
+        if (taskNameInput.val() === '' || dueDateInput.val() === '' || taskDescriptionInput.val() === '') {
+            alert('You can\'t leave nothing blank \'round\ here');
+            return;
+        } else {
+            // Get task details from input fields
+            let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            const taskName = taskNameInput.val();
+            const taskDueDate = dueDateInput.val();
+            const taskDescription = taskDescriptionInput.val();
 
-        // Create a new task object
-        const newTask = {
-            Name: taskName,
-            dueDate: taskDueDate,
-            description: taskDescription,
-            id: generateTaskId(),
-            status: "Time to start",
-        };
+            // Create a new task object
+            const newTask = {
+                title: taskName,
+                dueDate: taskDueDate,
+                description: taskDescription,
+                id: generateTaskId(),
+                status: "Time to start",
+            };
 
-        // Update task list in localStorage
-        if (taskList == null) {
-            taskList = [];
+            // Add new task to tasks array
+            tasks.push(newTask);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+
+            // Clear input fields and render updated task list
+            taskNameInput.val('');
+            dueDateInput.val('');
+            taskDescriptionInput.val('');
+            renderTaskList();
         }
-        taskList.push(newTask);
-        taskList = JSON.stringify(taskList);
-        localStorage.setItem('tasks', taskList);
-
-        // Clear input fields and render updated task list
-        taskNameInput.val('');
-        dueDateInput.val('');
-        taskDescriptionInput.val('');
-        renderTaskList();
     }
-}
+// Event listener for adding a new task
+    $(".taskForm").on('submit', handleAddTask);
+
 
 // Function to handle deleting a task
 function handleDeleteTask(event) {
@@ -160,14 +159,14 @@ function handleDrop(event, ui) {
     renderTaskList();
 }
 
-// When the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
-$(document).ready(function () {
+    // When the page loads, render the task list and make the due date field a date picker
     renderTaskList();
 
     // Initialize date picker for due date input field
     $(function() {
-        $( "#dueDate" ).datepicker();
+        $("#dueDate").datepicker();
     });
+});
 
     // Add event listener for adding a new task
     $(".taskForm").on('submit', handleAddTask);
