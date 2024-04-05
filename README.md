@@ -11,10 +11,8 @@ Install as you would normally clone a repo. For further instructions visit https
 
 ## Usage
 
-
-   ```md
     ![Screen shot of the webpage showing different tasks added ](./develop/assets/images/Screenshot%202024-04-04%20at%206.25.48 PM.png)
-    ```
+    
 
 ## Credits
 
