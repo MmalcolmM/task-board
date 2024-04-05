@@ -1,5 +1,3 @@
-// Retrieve tasks and nextId from localStorage
-
 // Define variables for different elements in the task board
 const todoList = $('#todoCards');
 const inProgressList = $('#inProgressCards');
