@@ -16,7 +16,7 @@ function generateTaskId() {
 // Function to create a task card
 function createTaskCard(task) {
    const taskCard = $("<div>")
-      .addClass('task-card draggable my-3)   
+      .addClass('task-card draggable my-3')   
       .attr('data-task-id', task.id);
    const cardHeader = $("<div>").addClass('card-header-h3').text(task.title);
    const cardBody = $("<div>").addClass('card-body');
@@ -59,9 +59,9 @@ function renderTaskList() {
       if (taskList[i].status === "to-do") {
          $("#todoCards").append(createTaskCard(taskList[i]))
       } else if (taskList[i].status === "in-progress") {
-         $("#inProgressCards").append(createTaskCard[taskList[i]))
+         $("#inProgressCards").append(createTaskCard(taskList[i]))
       } else {
-         $("#doneCards").append(createTaskCard[taskList[i]))
+         $("#doneCards").append(createTaskCard(taskList[i]))
       }
 
    }
@@ -85,13 +85,13 @@ function renderTaskList() {
     function handleAddTask(event) {
         event.preventDefault();
         // Check for empty input fields
-        if (taskNameInput.val() === '' || dueDateInput.val() === '' || taskDescriptionInput.val() === '') {
+        if (taskName.val() === '' || dueDate.val() === '' || taskDescription.val() === '') {
             alert('You can\'t leave nothing blank \'round\ here');
             return;
 
             // Create a new task object
             const newTask = {
-                title: $("taskNamee").val(),
+                title: $("#taskName").val(),
                 dueDate: $("#dueDate").val(),
                 taskDescription: $("#taskDescription").val(),
                 id: generateTaskId(),
@@ -124,7 +124,7 @@ function handleDeleteTask(event) {
 // Function to handle dropping a task into a new status lane
 function handleDrop(event, ui) {
    event.preventDefault();
-   const taskId = ui.draggable.attr("data-task-id);
+   const taskId = ui.draggable.attr("data-task-id");
    const newStatus = event.target.id;
 
    const task = taskList.find(task => task.id == taskId);
