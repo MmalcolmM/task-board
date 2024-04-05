@@ -10,8 +10,8 @@ When it works you should be able to add your task, move it from lane to lane and
 Install as you would normally clone a repo. For further instructions visit https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 
 ## Usage
-    md
-    ![Screen shot of the webpage showing different tasks added ](./develop/assets/images/Screenshot%202024-04-04%20at%206.25.48 PM.png)
+   <img width="1728" alt="Screenshot 2024-04-04 at 6 25 48 PM" src="https://github.com/MmalcolmM/task-board/assets/151230116/ee347132-c8a4-4053-9010-20c2b977d83a">
+
     
 
 ## Credits
@@ -22,5 +22,3 @@ Dan - helped a lot with parts of the JavaScript. Thank you Dan. Follow his work 
 
 N/A
 
-
-## Features
