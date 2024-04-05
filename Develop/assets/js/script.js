@@ -1,4 +1,5 @@
 // Define variables for different elements in the task board
+$(document).ready(function(){
 const todoList = $('#todoCards');
 const inProgressList = $('#inProgressCards');
 const doneList = $('#doneCards');
@@ -8,6 +9,10 @@ const taskDescriptionInput = $("#taskDescription");
 // const deleteBtn = $('.deleteBtn');
 // const lane = $('.laneList');
 
+    function startDatePicker(){
+        $(#duteDate").datepicker();
+          }
+    startDatePicker();
 // Set the z-index of lane elements to -1
 lane.css('z-index', '-1');
 
